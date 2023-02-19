@@ -48,8 +48,6 @@ class Voda_API:
     def send_values(self,**kwargs):
         body =dict()
         body = {
-                "1645162":"326",
-                "1645163":"180",
                 str(kwargs.get('cold_counter_id')): f"{int(kwargs.get('cold_water_value'))}",
                 str(kwargs.get('hot_counter_id')): str(kwargs.get('hot_water_value')),
                 str(kwargs.get('electro_counter_day_id')): str(kwargs.get('electro_counter_day_value')),
@@ -96,7 +94,7 @@ if __name__ == '__main__':
         data['electro_counter_day_value']=str(sys.argv[9])
         data['electro_counter_night_value']=str(sys.argv[10])
         #link send counter values
-        data['ipulink']=f"https://lk.itpc.ru/v1/counters/{data['username']}/"
+        data['ipulink']=f"https://lk.itpc.ru/v2/account/{data['username']}/counters/"
         api.login(**data)
         api.send_values(**data)
 
